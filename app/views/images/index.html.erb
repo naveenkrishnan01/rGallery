@@ -1,99 +1,31 @@
-<div class="container">
-       <div id="gallery"> 
-        <h2> All Images </h2>
-          <div class="row">
-             <div class="col-md-3">
-               <div class="photo photo-type-line">
-                 <a href="img/bw1.jpeg" class="photo-hover" data-lightbox="my-images" data-title="Lorem Ipsum">
-                   <div class="photo-info">
-                    <div class="headline">Lorem Ipsum</div>
-                    <div class="line"></div>
-                    <div class="desc">Lorem Ipsun kya baath hai shayad wohi hoga</div>
-                   </div>
-                   <div class="mask"></div>
-                   </a>
-                    </div class="photo-img"><img src="img/bw1.jpeg"></div>           
-              <div class="col-md-3">
-               <div class="photo photo-type-line">
-                 <a href="img/bw2.jpeg" class="photo-hover" data-lightbox="my-images" data-title="Lorem Ipsum">
-                   <div class="photo-info">
-                    <div class="headline">Lorem Ipsum</div>
-                    <div class="line"></div>
-                    <div class="desc">Lorem Ipsun kya baath hai shayad wohi hoga</div>
-                   </div>
-                   <div class="mask"></div>
-                   </a>
-                    </div class="photo-img"><img src="img/bw2.jpeg"></div>  
-                <div class="col-md-3">
-                  <div class="photo photo-type-line">
-                   <a href="img/bw3.jpeg" class="photo-hover" data-lightbox="my-images" data-title="Lorem Ipsum">
-                    <div class="photo-info">
-                    <div class="headline">Lorem Ipsum</div>
-                    <div class="line"></div>
-                    <div class="desc">Lorem Ipsun kya baath hai shayad wohi hoga</div>
-                   </div>
-                   <div class="mask"></div>
-                   </a>
-                    </div class="photo-img"><img src="img/bw3.jpeg"></div>     
-                 <div class="col-md-3">
-                  <div class="photo photo-type-line">
-                    <a href="img/bw4.jpeg" class="photo-hover" data-lightbox="my-images" data-title="Lorem Ipsum">
-                   <div class="photo-info">
-                    <div class="headline">Lorem Ipsum</div>
-                    <div class="line"></div>
-                    <div class="desc">Lorem Ipsun kya baath hai shayad wohi hoga</div>
-                   </div>
-                   <div class="mask"></div>
-                   </a>
-                    </div class="photo-img"><img src="img/bw4.jpeg"></div>       
-               </div>
-               <div class="row">
-             <div class="col-md-3">
-               <div class="photo photo-type-line">
-                 <a href="img/bw5.jpeg" class="photo-hover" data-lightbox="my-images" data-title="Lorem Ipsum">
-                   <div class="photo-info">
-                    <div class="headline">Lorem Ipsum</div>
-                    <div class="line"></div>
-                    <div class="desc">Lorem Ipsun kya baath hai shayad wohi hoga</div>
-                   </div>
-                   <div class="mask"></div>
-                   </a>
-                    </div class="photo-img"><img src="img/bw5.jpeg"></div> 
-                 <div class="col-md-3">
-               <div class="photo photo-type-line">
-                 <a href="img/bw6.jpeg" class="photo-hover" data-lightbox="my-images" data-title="Lorem Ipsum">
-                   <div class="photo-info">
-                    <div class="headline">Lorem Ipsum</div>
-                    <div class="line"></div>
-                    <div class="desc">Lorem Ipsun kya baath hai shayad wohi hoga</div>
-                   </div>
-                   <div class="mask"></div>
-                   </a>
-                    </div class="photo-img"><img src="img/bw6.jpeg"></div> 
+<!--<div class="container"> -->
+       <div id="gallery">
+        <% if @images.exists? %> 
+           <% if @images.each_slice(4) do |image| %>
+             <div class="row">
+                <% image.each do |image| %>
                   <div class="col-md-3">
-               <div class="photo photo-type-line">
-                 <a href="img/bw7.jpeg" class="photo-hover" data-lightbox="my-images" data-title="Lorem Ipsum">
-                   <div class="photo-info">
-                    <div class="headline">Lorem Ipsum</div>
-                    <div class="line"></div>
-                    <div class="desc">Lorem Ipsun kya baath hai shayad wohi hoga</div>
-                   </div>
-                   <div class="mask"></div>
-                   </a>
-                    </div class="photo-img"><img src="img/bw7.jpeg"></div>
-                 <div class="col-md-3">
-               <div class="photo photo-type-line">
-                 <a href="img/bw8.jpeg" class="photo-hover" data-lightbox="my-images" data-title="Lorem Ipsum">
-                   <div class="photo-info">
-                    <div class="headline">Lorem Ipsum</div>
-                    <div class="line"></div>
-                    <div class="desc">Lorem Ipsun kya baath hai shayad wohi hoga</div>
-                   </div>
-                   <div class="mask"></div>
-                   </a>
-                    </div class="photo-img"><img src="img/bw8.jpeg"></div>          
-            </div>
-          </div>
-     
-       </div>   
-     </div><!-- /.container -->
+                  <div class="photo photo-type-line">
+                  <a href="<%= image.image_url() %>" class="photo-hover" data-lightbox="my-images" data-title="<%=image.image_title %>">
+                  <div class="photo-info">
+                  <div class="headline"><%= image.image_title %></div>
+                  <div class="line"></div>
+                  <div class="desc"><%= image.image_description %></div>
+                  </div> 
+                  <div class="mask"></div>
+                  </a>
+                  </div class="photo-img"><%= image_tag image.image_url(:thumb) %></div>       
+                <!--  </div><!-- /.container -->  
+                <% end %>
+             </div>    
+          <% end %>
+           </div>
+          <%end %>
+          <%else%>
+            <p> There are no images</p> 
+        <% end %>
+        </div>
+        
+
+         
+           

@@ -17,6 +17,21 @@ class CategoriesController < ApplicationController
       end    
   end
 
+  def edit
+  end
+  
+  def update
+  end
+  
+  def destroy
+  end  
+  
+  def show
+    @category = Category.find(params[:id])
+    @categories = Category.all
+    @images = @category.images
+  end  
+
   private
     def category_params
       params.require(:category).permit(:name)
